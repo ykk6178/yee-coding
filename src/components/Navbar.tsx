@@ -1,40 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../assets/styles/components/Navbar.scss";
+import { NavType } from "../types/NavBar";
 
 const Navbar = () => {
-  const [showNavbar, setShowNavbar] = React.useState(false);
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar);
-  };
+  const navLinks = [
+    { path: `/`, name: NavType.Home },
+    { path: `/TTT/${NavType.Blogs}`, name: NavType.Blogs },
+    { path: `/${NavType.Projects}`, name: NavType.Projects },
+    { path: `/${NavType.About}`, name: NavType.About },
+    { path: `/${NavType.Contact}`, name: NavType.Contact },
+  ];
+
   return (
     <>
-      <nav className="navbar ">
-        <div className="container flex">
-          <div className="logo">{/* <Logo /> */}</div>
-          <div className="menu-icon" onClick={handleShowNavbar}>
-            {/* <Hamburger /> */}
-          </div>
-          <div className={`nav-elements  ${showNavbar && "active"}`}>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/blogs">Blogs</NavLink>
-              </li>
-              <li>
-                <NavLink to="/projects">Projects</NavLink>
-              </li>
-              <li>
-                <NavLink to="/about">About</NavLink>
-              </li>
-              <li>
-                <NavLink to="/contact">Contact</NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <nav className="navbar">
+        <ul className="flex flex-row">
+          {navLinks.map((link) => (
+            <li key={link.path} className="w-full p-3 nav-item">
+              <NavLink to={link.path}>{link.name}</NavLink>
+            </li>
+          ))}
+        </ul>
       </nav>
     </>
   );

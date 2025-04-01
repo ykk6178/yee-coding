@@ -1,0 +1,18 @@
+$p-10: 10px;
+$p-20: 20px;
+$crumb-separator: '>';
+
+.breadcrumbs {
+    > * {
+        display: flex;
+    }
+    .crumb {
+        &::after {
+            content: $crumb-separator;
+            margin: 0 $p-10;
+        }
+        &:last-child::after {
+            display: none;
+        }
+    }
+}
