@@ -1,6 +1,6 @@
 import { StrictMode, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Header from "./components/Header";
@@ -14,13 +14,13 @@ const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <Header />
         <Suspense fallback={<Loading />}>
           <App />
         </Suspense>
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   </StrictMode>
 );

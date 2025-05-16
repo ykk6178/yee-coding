@@ -6,7 +6,7 @@ import { NavType } from "../types/NavBar";
 const Navbar = () => {
   const navLinks = [
     { path: `/`, name: NavType.Home },
-    { path: `/TTT/${NavType.Blogs}`, name: NavType.Blogs },
+    { path: `/${NavType.Blogs}`, name: NavType.Blogs },
     { path: `/${NavType.Projects}`, name: NavType.Projects },
     { path: `/${NavType.About}`, name: NavType.About },
     { path: `/${NavType.Contact}`, name: NavType.Contact },
