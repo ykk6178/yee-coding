@@ -1,29 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface CounterState {
-  value: number;
+  reduxState?: number; //  新增屬性
 }
 
 const initialState: CounterState = {
-  value: 0,
+    reduxState: undefined, // 初始值
+
 };
 
 const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    setReduxState: (state, action: PayloadAction<number>) => {
+      state.reduxState = action.payload;
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { setReduxState } = counterSlice.actions;
 
 export default counterSlice.reducer;

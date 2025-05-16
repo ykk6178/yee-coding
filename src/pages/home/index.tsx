@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../store/counterSlice"; // 导入 actions
+import { setReduxState } from "../../store/counterSlice"; // 导入 actions
 import type { RootState } from "../../store/store"; // 导入 RootState 类型
 import { ExportExcelButton, SheetData } from "../../components/ExportExcelButton";
 
 const Home: React.FC = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
     const downloadData: SheetData[] = [
     {
@@ -33,10 +32,8 @@ const Home: React.FC = () => {
   ];
   return (
     <div>
-      <h1>Count: {count}</h1>
       <p>Welcome to the Home Page!</p>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <button onClick={() => dispatch(setReduxState(100))}>setReduxState</button>
       <p>測試的試算表</p>
       <ExportExcelButton fileName={"測試的試算表"} sheetDatas={downloadData} />
 
